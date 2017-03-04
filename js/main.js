@@ -39,7 +39,7 @@ $(function(){
     });
     $('.right').click(function(){
         var barcode = books[currentBook];
-        if(bookmark[barcode]<nbImages[barcode]-1){
+        if(bookmark[barcode]<nbImages[barcode]){
            bookmark[barcode]++;
         }
         showPage();
