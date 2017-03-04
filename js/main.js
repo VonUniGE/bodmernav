@@ -58,5 +58,6 @@ $(function(){
     function showPage(){
         var barcode = books[currentBook];
         $('.main-image').attr('src',pages[barcode][bookmark[barcode]]);
+        $('.infobox').text(barcode+' '+bookmark[barcode]+'/'+nbImages[barcode]);
     }
 });
