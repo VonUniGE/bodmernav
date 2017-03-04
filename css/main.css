@@ -1,0 +1,42 @@
+html,body{
+    margin:0;
+    height:100%;
+    overflow:hidden;
+}
+.main-image{
+    min-height:100%;
+    min-width:100%;
+    height:auto;
+    width:auto;
+    position:absolute;
+    top:-100%; bottom:-100%;
+    left:-100%; right:-100%;
+    margin:auto;
+}
+.arrow{
+  position : fixed;
+}
+.arrow img{
+  width : 40px;
+}
+.top{
+  top       : 40px;
+  left      : 50%;
+  transform : translate(-50%,0%);
+}
+.bottom{
+  bottom    : 40px;
+  left      : 50%;
+  transform : translate(-50%,0%);
+}
+.left{
+  left      : 40px;
+  top       : 50%;
+  transform : translate(0%,50%);
+}
+.right{
+  right     : 40px;
+  top       : 50%;
+  transform : translate(0%,50%);
+}
+
