@@ -4,17 +4,27 @@ $(function(){
     var nbImages={};
     var bookmark={};
     var currentBook=0;
-    $.getJSON('https://bodmer.dlcm.ch/api/books', function(data) {
-       var content = data.content;
-       for(var i=0; i<content.length; i++){
-          var barcode  = content[i].barcode;
-          nbImages[barcode] = content[i].nbImages;
-          bookmark[barcode] = 2;
-          books.push(barcode);
-          pages[barcode]=[];
-          for(var j=2; j<nbImages[barcode]; j++){
-              var pageNumber = ("00" + j).slice(-3);
-              pages[barcode].push("https://bodmer.dlcm.ch/img/"+barcode+"/"+barcode+"_"+pageNumber+".jpg");
+    var username = 'changeit';
+    var password = 'changeit';
+    $.ajax ({
+       type: "GET",
+       url: 'https://bodmer.dlcm.ch/api/books',
+       dataType: 'json',
+       headers: {
+          "Authorization": "Basic " + btoa(username + ":" + password)
+       },
+       success: function (data){
+          var content = data.content;
+          for(var i=0; i<content.length; i++){
+             var barcode  = content[i].barcode;
+             nbImages[barcode] = content[i].nbImages;
+             bookmark[barcode] = 2;
+             books.push(barcode);
+             pages[barcode]=[];
+             for(var j=2; j<nbImages[barcode]; j++){
+                var pageNumber = ("00" + j).slice(-3);
+                pages[barcode].push("https://" + username + ":" + password + "@bodmer.dlcm.ch/img/"+barcode+"/"+barcode+"_"+pageNumber+"_small.jpg");
+             }
           }
        }
     });
